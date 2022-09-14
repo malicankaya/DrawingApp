@@ -16,6 +16,8 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     private var mBrushSize: Float = 0.toFloat()
     private var color = Color.BLACK
 
+    private val mPaths = ArrayList<CustomPath>()
+
     init {
         setUpDrawing()
     }
@@ -31,9 +33,21 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         mBrushSize = 20.toFloat()
     }
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        mCanvasBitMap = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888)
+        canvas = Canvas(mCanvasBitMap!!)
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawBitmap(mCanvasBitMap!!, 0f, 0f, mCanvasPaint)
+
+        for(path in mPaths){
+            mDrawPaint!!.strokeWidth = path.brushThickness
+            mDrawPaint!!.color = path.color
+            canvas.drawPath(path,mDrawPaint!!)
+        }
 
         if (!mDrawPath!!.isEmpty) {
             mDrawPaint!!.strokeWidth = mDrawPath!!.brushThickness
@@ -51,7 +65,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
                 mDrawPath!!.color = color
                 mDrawPath!!.brushThickness = mBrushSize
 
-                //if double touch appears, first one will be reset
+
                 mDrawPath!!.reset()
                 mDrawPath!!.moveTo(touchX!!, touchY!!)
             }
@@ -59,6 +73,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
                 mDrawPath!!.lineTo(touchX!!,touchY!!)
             }
             MotionEvent.ACTION_UP -> {
+                mPaths.add(mDrawPath!!)
                 mDrawPath = CustomPath(color, mBrushSize)
             }
             else -> return false
