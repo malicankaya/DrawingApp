@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.malicankaya.drawingapp.DrawingView
-        android:id="@+id/drawingView"
+
+    <FrameLayout
+        android:id="@+id/flDrawingViewContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -15,15 +16,35 @@
         app:layout_constraintBottom_toTopOf="@id/llBrushColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <ImageView
+            android:id="@+id/ivBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/image"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/imageDescription"
+            />
+
+
+        <com.malicankaya.drawingapp.DrawingView
+            android:id="@+id/drawingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            />
+    </FrameLayout>
+
+
+
 
     <LinearLayout
         android:id="@+id/llBrushColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/drawingView"
+        app:layout_constraintTop_toBottomOf="@id/flDrawingViewContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/ibBrush"
@@ -36,7 +57,8 @@
             android:background="@color/skin"
             android:tag="@color/skin"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml" />
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -45,7 +67,8 @@
             android:background="@color/black"
             android:tag="@color/black"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml"/>
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -54,7 +77,8 @@
             android:background="@color/red"
             android:tag="@color/red"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml"/>
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -63,7 +87,8 @@
             android:background="@color/green"
             android:tag="@color/green"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml"/>
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -72,7 +97,8 @@
             android:background="@color/blue"
             android:tag="@color/blue"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml"/>
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -81,7 +107,8 @@
             android:background="@color/yellow"
             android:tag="@color/yellow"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml"/>
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -90,7 +117,8 @@
             android:background="@color/lollipop"
             android:tag="@color/lollipop"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml"/>
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -99,7 +127,8 @@
             android:background="@color/random"
             android:tag="@color/random"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml"/>
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
 
         <ImageButton
             android:layout_width="25dp"
@@ -109,7 +138,8 @@
             android:background="@color/white"
             android:tag="@color/white"
             android:onClick="paintClicked"
-            tools:ignore="UsingOnClickInXml"/>
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="@string/imageDescription"/>
 
     </LinearLayout>
 
@@ -124,6 +154,7 @@
         app:layout_constraintTop_toBottomOf="@id/llBrushColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/imageDescription"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
