@@ -3,6 +3,7 @@ package com.malicankaya.drawingapp
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -25,14 +26,14 @@ class MainActivity : AppCompatActivity() {
         )
 
         drawingView = findViewById(R.id.drawingView)
-        drawingView?.setSizeForBrush(20.toFloat())
+        drawingView?.setSizeForBrush(10.toFloat())
 
         ibBrush.setOnClickListener {
             showSetBrushSizeChooserDialog()
         }
     }
 
-    fun showSetBrushSizeChooserDialog() {
+    private fun showSetBrushSizeChooserDialog() {
         val brushDialog = Dialog(this)
         brushDialog.setContentView(R.layout.dialog_brush_size)
         brushDialog.setTitle("Brush size: ")
@@ -55,4 +56,18 @@ class MainActivity : AppCompatActivity() {
 
         brushDialog.show()
     }
+
+    fun paintClicked(view: View){
+        if(view != mImageButtonCurrentPaint){
+            val imageButton = view as ImageButton
+
+            drawingView?.setColor(imageButton.tag.toString())
+
+            imageButton.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.pallet_selected))
+
+            mImageButtonCurrentPaint?.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.pallet_normal))
+            mImageButtonCurrentPaint = view
+        }
+    }
+
 }
