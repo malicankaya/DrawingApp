@@ -166,6 +166,24 @@
             android:contentDescription="@string/imageDescription"
             />
         <ImageButton
+            android:id="@+id/ivUndo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_undo"
+            android:scaleType="fitXY"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/imageDescription"/>
+        <ImageButton
+            android:id="@+id/ivRedo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_redo"
+            android:scaleType="fitXY"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/imageDescription"/>
+        <ImageButton
             android:id="@+id/ibBrush"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -175,6 +193,7 @@
             android:backgroundTint="@color/white"
             android:contentDescription="@string/imageDescription"
             />
+
     </LinearLayout>
 
 
