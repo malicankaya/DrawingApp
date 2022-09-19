@@ -3,6 +3,9 @@ package com.malicankaya.drawingapp
 import android.Manifest
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -69,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         val ibGallery: ImageButton = findViewById(R.id.ibGallery)
         val ivUndo: ImageView = findViewById(R.id.ivUndo)
         val ivRedo: ImageView = findViewById(R.id.ivRedo)
+        val ibSave: ImageView = findViewById(R.id.ibSave)
 
         mImageButtonCurrentPaint = linearLayoutColors[2] as ImageButton
         mImageButtonCurrentPaint!!.setImageDrawable(
@@ -92,6 +96,10 @@ class MainActivity : AppCompatActivity() {
 
         ivRedo.setOnClickListener {
             drawingView?.onClickRedo()
+        }
+
+        ibSave.setOnClickListener {
+
         }
     }
 
@@ -160,6 +168,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         builder.create().show()
+    }
+
+    private fun getBitmapFromView(view: View): Bitmap{
+        val returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+
+        val canvas = Canvas(returnedBitmap)
+        val bgDrawable = view.background
+        if(bgDrawable != null){
+            bgDrawable.draw(canvas)
+        }else{
+            canvas.drawColor(Color.WHITE)
+        }
+        view.draw(canvas)
+
+        return returnedBitmap
     }
 
 }
