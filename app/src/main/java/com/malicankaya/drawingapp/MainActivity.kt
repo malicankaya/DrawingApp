@@ -113,17 +113,16 @@ class MainActivity : AppCompatActivity() {
         ibSave.setOnClickListener {
             if (isReadStorageAllowed()) {
                 showCustomProgressDialog()
-                jobDef = GlobalScope.launch {
+                jobDef = lifecycleScope.launch {
                     val fl: FrameLayout = findViewById(R.id.flDrawingViewContainer)
                     imagePath = saveBitmapFile(getBitmapFromView(fl))
                 }
             }
         }
 
-        ibShare.setOnClickListener{
+        ibShare.setOnClickListener {
             ibSave.performClick()
-            runBlocking {
-                jobDef?.join()
+            jobDef?.invokeOnCompletion {
                 if (imagePath.isNotEmpty()) {
                     shareImage(imagePath)
                 }
