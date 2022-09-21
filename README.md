@@ -20,17 +20,15 @@ Drawing app
  </div>
  
  <div>
- 
-<img src="https://user-images.githubusercontent.com/24587856/191569382-7fc88949-8271-4303-8d45-4737b2a53792.png" width="300" height="630">
  <h5>
   3 times UNDO button
  </h5>
- </img>
-<img src="https://user-images.githubusercontent.com/24587856/191569349-88f0c520-ef85-4591-96e2-c29e0e8e7d21.png" width="300" height="630">
+<img src="https://user-images.githubusercontent.com/24587856/191569382-7fc88949-8271-4303-8d45-4737b2a53792.png" width="300" height="630">
  <h5>
   3 times REDO button
  </h5>
-  </img>
+<img src="https://user-images.githubusercontent.com/24587856/191569349-88f0c520-ef85-4591-96e2-c29e0e8e7d21.png" width="300" height="630">
+ 
  </div>
  
 
