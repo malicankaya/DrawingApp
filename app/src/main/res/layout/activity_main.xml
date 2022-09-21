@@ -207,6 +207,16 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_save" />
 
+        <ImageButton
+            android:id="@+id/ibShare"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/imageDescription"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_share" />
+
     </LinearLayout>
 
 
