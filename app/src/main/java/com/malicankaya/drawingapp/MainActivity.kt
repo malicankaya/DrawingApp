@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private var drawingView: DrawingView? = null
     private var mImageButtonCurrentPaint: ImageButton? = null
+    private var mCustomDialog: Dialog? = null
     private val openGalleryLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK && result.data != null) {
@@ -108,7 +109,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         ibSave.setOnClickListener {
+
             if(isReadStorageAllowed()){
+                showCustomProgressDialog()
                 lifecycleScope.launch {
                     val fl: FrameLayout = findViewById(R.id.flDrawingViewContainer)
 
@@ -245,6 +248,7 @@ class MainActivity : AppCompatActivity() {
                     result = f.absolutePath
 
                     runOnUiThread {
+                        hideCustomDialog()
                         if (result.isNotEmpty()) {
                             Toast.makeText(
                                 this@MainActivity,
@@ -269,4 +273,18 @@ class MainActivity : AppCompatActivity() {
         return result
     }
 
+    private fun showCustomProgressDialog(){
+        mCustomDialog = Dialog(this)
+
+        mCustomDialog?.setContentView(R.layout.dialog_custom_progress)
+
+        mCustomDialog?.show()
+    }
+
+    private fun hideCustomDialog(){
+        if(mCustomDialog != null){
+            mCustomDialog?.dismiss()
+            mCustomDialog = null
+        }
+    }
 }
